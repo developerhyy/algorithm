@@ -85,14 +85,15 @@ public class ArrayList<E> implements List<E> {
         if(index <0 || index>=size)
             throw new IllegalArgumentException("数组下标越界...");
         E val=data[index];
-        if(size < data.length >> 1){
-            grow(data.length/2);
-        }
+
         for (int i = index; i <size-1 ; i++) {
             data[i]=data[i+1];
         }
         data[size-1]=null;//pass
         size--;
+        if(size < data.length >> 1){
+            grow(data.length/2);
+        }
         return val;
     }
 
